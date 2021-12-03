@@ -12,7 +12,7 @@ export const makeErrorScript = (error: string) => {
 
   log_crit() {
     echoerr
-    echoerr "  \\x1B[31m$@\\x1B[39m"
+    echoerr "  \\x1B[31mserver error: $@\\x1B[39m"
     echoerr
   }
 

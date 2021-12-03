@@ -235,6 +235,46 @@ export default function Home() {
               </p>
             </div>
           </Section>
+          <Section title="FAQ">
+            <div className="markdown-body">
+              <details open>
+                <summary>It shows 403 error or GitHub rate limit error</summary>
+                <p>
+                  On our server, we call GitHub API to retrived repo release
+                  information, in the downloaded shell script it will call
+                  GitHub API to download the asset. The first one happens on our
+                  server, and the second one happens locally on your machine.
+                </p>
+                <p>
+                  Sometimes it hits rate limit on the server side and shows{" "}
+                  <code>server error</code> in the error message, in this case
+                  you need to provide a GitHub personal token in the{" "}
+                  <code>curl</code> command via query parameter{" "}
+                  <code>?token=FOO</code> or http header{" "}
+                  <code>x-github-token=FOO</code>.
+                </p>
+                <p>
+                  Otherwise, it will be an error from the shell script you ran
+                  locally. Setting query paramater or http header will also fix
+                  this, but you can also use an environment variable{" "}
+                  <code>GITHUB_TOKEN</code> locally to avoid that, in this way
+                  the token will never be sent to our server.
+                </p>
+                <div></div>
+              </details>
+              <details open>
+                <summary>Can I share the shell script?</summary>
+                <p>
+                  Absolutely Yes, if you open <code>{APP_URL}/$OWN/$REPO</code>{" "}
+                  in your browser you can see the generated shell script, you
+                  can share the code with anyone. But please note that the query
+                  parameters will be harecoded into the script, which means you
+                  should NOT share the script when using a <code>?token=</code>{" "}
+                  query.
+                </p>
+              </details>
+            </div>
+          </Section>
           <Section title="Sponsors">
             <div className="markdown-body">
               <p>
