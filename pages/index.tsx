@@ -156,7 +156,20 @@ export default function Home() {
           <Section title="For Maintainers">
             <div className="markdown-body">
               <p>
-                To make your project support Bina, you need to add a{" "}
+                Bina automatically{" "}
+                <a
+                  href="https://github.com/egoist/bina/blob/main/lib/generate_config.ts"
+                  target="_blank"
+                  rel="nofollow noopener"
+                >
+                  infers the asset name based on the user's OS and ARCH
+                </a>
+                , but sometimes it can go wrong, because not everyone follows
+                the same naming convention when publishing their assets, that's
+                where the <code>bina.json</code> comes in.
+              </p>
+              <p>
+                To make Bina get the asset 100% correctly, you need to add a{" "}
                 <code>bina.json</code>
                 file to your release assets like this:
               </p>
