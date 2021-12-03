@@ -234,14 +234,14 @@ export const makeInstallerScript = ({
 
   
   start() {
-    uname_os_check
-    uname_arch_check
-    platform_check
-
     repo="${repo.owner}/${repo.name}"
     # github repo such as "github.com/egoist/doko"
     repo_url="github.com/$repo"
   
+    uname_os_check
+    uname_arch_check
+    platform_check
+
     install_dir="$(realpath ${bin.installDir})"
     bin_name="${bin.name}"
     github_token="$GITHUB_TOKEN"
