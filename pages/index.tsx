@@ -17,8 +17,10 @@ const Window = () => {
         </div>
       </header>
       <div className="p-5 font-mono">
-        {`$ `}
-        {`curl -sSL ${APP_URL}/egoist/dum | sh`}
+        <p>
+          {`$ `}
+          {`curl -sSL ${APP_URL}/egoist/dum | sh`}
+        </p>
         <div className="mt-5 text-gray-500">
           <p>
             <span className="text-purple-500">{`==> `}</span>
@@ -39,6 +41,15 @@ const Window = () => {
           <p>
             <span className="text-purple-500">{`==> `}</span>
             {`Installation complete`}
+          </p>
+        </div>
+        <p className="mt-5">
+          {`$ `}
+          {`dum -v`}
+        </p>
+        <div className="mt-5 text-gray-500">
+          <p>
+            <span>{`0.1.10`}</span>
           </p>
         </div>
       </div>
