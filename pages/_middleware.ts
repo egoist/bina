@@ -40,7 +40,10 @@ const installerScriptHandler = handleMakeInstallerError(async (req) => {
     accept: "application/json",
   }
   const tokenFromEnv = !!process.env.GITHUB_TOKEN
-  const ghToken = params.get("token") || process.env.GITHUB_TOKEN
+  const ghToken =
+    req.headers.get("x-github-token") ||
+    params.get("token") ||
+    process.env.GITHUB_TOKEN
 
   if (ghToken) {
     githubHeaders.authorization = `token ${ghToken}`

@@ -148,7 +148,9 @@ export default function Home() {
                 </li>
                 <li>
                   <code>token</code>: GitHub personal token, if you want to
-                  install from a private repo.
+                  install from a private repo. Alternatively you can pass the
+                  token via http header:{" "}
+                  <code>curl -H "x-github-token:YOUR_TOKEN"</code>
                 </li>
               </ul>
             </div>
