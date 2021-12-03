@@ -17,6 +17,8 @@ export const makeErrorScript = (error: string) => {
   }
 
   log_crit ${JSON.stringify(error)}
+  exit 1
+
   `
 }
 
