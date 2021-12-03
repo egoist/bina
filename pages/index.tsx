@@ -133,6 +133,13 @@ export default function Home() {
                 This will then install the binary to <code>./bin</code>{" "}
                 directory instead.
               </p>
+              <p>
+                If you want to install a specific version, you can append{" "}
+                <code>@$VERSION</code> to the pathname:
+              </p>
+              <CodeBlock
+                code={`curl -sSL "${APP_URL}/$OWNER/$NAME@v1.2.3 | sh`}
+              />
               <p>More query parameters are available:</p>
               <ul>
                 <li>
