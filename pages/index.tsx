@@ -138,7 +138,7 @@ export default function Home() {
                 <code>@$VERSION</code> to the pathname:
               </p>
               <CodeBlock
-                code={`curl -sSL "${APP_URL}/$OWNER/$NAME@v1.2.3 | sh`}
+                code={`curl -sSL "${APP_URL}/$OWNER/$NAME@v1.2.3" | sh`}
               />
               <p>More query parameters are available:</p>
               <ul>
