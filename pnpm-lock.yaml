@@ -6,6 +6,7 @@ specifiers:
   autoprefixer: ^10.4.0
   next: ^12.0.4
   postcss: ^8.4.4
+  preact: ^10.6.2
   react: ^17.0.2
   react-dom: ^17.0.2
   tailwindcss: ^2.2.19
@@ -21,6 +22,7 @@ devDependencies:
   '@types/react': 17.0.37
   autoprefixer: 10.4.0_postcss@8.4.4
   postcss: 8.4.4
+  preact: 10.6.2
   tailwindcss: 2.2.19_6b4e3d148bdcb715d5f821ed0a9c268b
   typescript: 4.5.2
 
@@ -1836,6 +1838,10 @@ packages:
       nanoid: 3.1.30
       picocolors: 1.0.0
       source-map-js: 1.0.1
+    dev: true
+
+  /preact/10.6.2:
+    resolution: {integrity: sha512-ppDjurt75nSxyikpyali+uKwRl8CK9N6ntOPovGIEGQagjMLVzEgVqFEsUUyUrqyE9Ch90KE0jmFc9q2QcPLBA==}
     dev: true
 
   /pretty-hrtime/1.0.3:
