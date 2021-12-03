@@ -20,16 +20,18 @@ const Window = () => {
       <div className="p-5 font-mono">
         <p>
           {`$ `}
-          {`curl -sSL ${APP_URL}/egoist/dum | sh`}
+          <span className="text-cyan-500">curl</span>
+          {` -sSL ${APP_URL}/denoland/deno | `}
+          <span className="text-cyan-500">sh</span>
         </p>
         <div className="mt-5 text-gray-500">
           <p>
             <span className="text-purple-500">{`==> `}</span>
-            <span>{`Downloading github.com/egoist/dum@latest`}</span>
+            <span>{`Downloading github.com/denoland/deno@latest`}</span>
           </p>
           <p>
             <span className="text-purple-500">{`==> `}</span>
-            {`Resolved version latest to v0.1.10`}
+            {`Resolved version latest to v1.16.3`}
           </p>
           <p>
             <span className="text-purple-500">{`==> `}</span>
@@ -37,21 +39,21 @@ const Window = () => {
           </p>
           <p>
             <span className="text-purple-500">{`==> `}</span>
-            {`Installing dum to /usr/local/bin`}
+            {`Installing deno to /usr/local/bin`}
           </p>
           <p>
             <span className="text-purple-500">{`==> `}</span>
             {`Installation complete`}
           </p>
         </div>
-        <p className="mt-5">
-          {`$ `}
-          {`dum -v`}
-        </p>
-        <div className="mt-5 text-gray-500">
+        <div className="mt-5">
           <p>
-            <span>{`0.1.10`}</span>
+            {`$ `}
+            <span className="text-cyan-500">deno</span>
           </p>
+          <p>{`Deno 1.16.3`}</p>
+          <p>{`exit using ctrl+d or close()`}</p>
+          <p>{`> ▌`}</p>
         </div>
       </div>
     </div>
