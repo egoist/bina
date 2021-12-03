@@ -268,7 +268,7 @@ export default function Home() {
                   Absolutely Yes, if you open <code>{APP_URL}/$OWN/$REPO</code>{" "}
                   in your browser you can see the generated shell script, you
                   can share the code with anyone. But please note that the query
-                  parameters will be harecoded into the script, which means you
+                  parameters will be hardcoded into the script, which means you
                   should NOT share the script when using a <code>?token=</code>{" "}
                   query.
                 </p>
