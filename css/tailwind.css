@@ -1,0 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.markdown-body p {
+  @apply my-5;
+}
+
+.markdown-body ul {
+  @apply pl-12 list-disc my-5;
+}
+
+.markdown-body :not(pre) > code::before,
+.markdown-body :not(pre) > code::after {
+  content: "`";
+}
+
+.markdown-body code {
+  @apply text-yellow-500;
+}
