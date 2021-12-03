@@ -18,7 +18,7 @@ const Window = () => {
       </header>
       <div className="p-5 font-mono">
         {`$ `}
-        {`curl -sf ${APP_URL}/egoist/dum | sh`}
+        {`curl -sSL ${APP_URL}/egoist/dum | sh`}
         <div className="mt-5 text-gray-500">
           <p>
             <span className="text-purple-500">{`==> `}</span>
@@ -99,7 +99,7 @@ export default function Home() {
         <Section title="For Users">
           <div className="markdown-body">
             <p>Basic usage:</p>
-            <CodeBlock code={`curl -sf ${APP_URL}/$OWNER/$NAME | sh`} />
+            <CodeBlock code={`curl -sSL ${APP_URL}/$OWNER/$NAME | sh`} />
             <p>
               The above command will install appropriate release from{" "}
               <code>github.com/$OWNER/$NAME</code>, by default we install it to{" "}
@@ -107,7 +107,7 @@ export default function Home() {
               passing a query parameter <code>dir</code> like this:
             </p>
             <CodeBlock
-              code={`curl -sf "${APP_URL}/$OWNER/$NAME?dir=./bin" | sh`}
+              code={`curl -sSL "${APP_URL}/$OWNER/$NAME?dir=./bin" | sh`}
             />
             <p>
               This will then install the binary to <code>./bin</code> directory

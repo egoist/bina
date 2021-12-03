@@ -276,7 +276,7 @@ export const makeInstallerScript = ({
       install "$bin_file" "$install_dir"
     else
       log_info "Permissions required for installation to $install_dir — alternatively specify a new directory with:"
-      log_info "  $ curl -sf "https://bina.egoist.sh/$repo@$version?dir=/dir/to/install/to" | sh"
+      log_info "  $ curl -sSL "https://bina.egoist.sh/$repo@$version?dir=/dir/to/install/to" | sh"
       sudo install "$bin_file" "$install_dir"
     fi
   
