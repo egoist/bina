@@ -244,6 +244,7 @@ export const makeInstallerScript = ({
   
     install_dir="$(realpath ${bin.installDir})"
     bin_name="${bin.name}"
+    github_token="$GITHUB_TOKEN"
     ${token ? `github_token="${token}"` : ``}
   
     # API endpoint such as "http://localhost:3000"
