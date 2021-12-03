@@ -39,6 +39,7 @@ const installerScriptHandler = handleMakeInstallerError(async (req) => {
   const githubHeaders: Record<string, string> = {
     accept: "application/json",
   }
+  const tokenFromEnv = !!process.env.GITHUB_TOKEN
   const ghToken = params.get("token") || process.env.GITHUB_TOKEN
 
   if (ghToken) {
@@ -109,7 +110,8 @@ const installerScriptHandler = handleMakeInstallerError(async (req) => {
       installDir: params.get("dir") || "/usr/local/bin",
       fileInAsset: params.get("file"),
     },
-    token: ghToken,
+    // Don't pass our own token to the generated script
+    token: tokenFromEnv ? undefined : ghToken,
     original_version: repo.originalVersion,
     resolved_version: release.tag_name,
     platforms,
