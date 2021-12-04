@@ -209,6 +209,18 @@ export const makeInstallerScript = ({
     echo "\${TMPDIR}"
   }
 
+  realpath() {
+    OURPWD=$PWD
+    cd "$(dirname "$1")"
+    LINK=$(readlink "$(basename "$1")")
+    while [ "$LINK" ]; do
+      cd "$(dirname "$LINK")"
+      LINK=$(readlink "$(basename "$1")")
+    done
+    REALPATH="$PWD/$(basename "$1")"
+    cd "$OURPWD"
+    echo "$REALPATH"
+  }
   
   start() {
     repo="${repo.owner}/${repo.name}"
@@ -219,7 +231,7 @@ export const makeInstallerScript = ({
     uname_arch_check
     platform_check
 
-    install_dir="$(realpath ${bin.installDir})"
+    install_dir="$realpath ${bin.installDir}"
     bin_name="${bin.name}"
     github_token="$GITHUB_TOKEN"
     ${token ? `github_token="${token}"` : ``}
