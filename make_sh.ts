@@ -85,7 +85,7 @@ export const makeInstallerScript = ({
 
     code=$(curl ${whenDebug(
       `-v`
-      )} -w '%{http_code}' -H "$header1" -H '"$header2"' -H "$header3" -sSL -o "$local_file" "$source_url")
+      )} -w '%{http_code}' -H "$header1" -H "$header2" -H "$header3" -sSL -o "$local_file" "$source_url")
     if [ "$code" != "200" ]; then
       log_crit "Error downloading, got $code response from server"
       return 1
@@ -266,7 +266,7 @@ export const makeInstallerScript = ({
     log_info "Downloading asset for $os $arch"
 
     if [ -n "$github_token" ]; then
-      auth_header="Authorization: token $github_token"
+      auth_header="Authorization: 'token $github_token'"
     fi
 
     http_download_curl "$tmp" "$download_url" "accept: application/octet-stream" "$auth_header"
