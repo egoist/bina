@@ -210,8 +210,10 @@ export const makeInstallerScript = ({
   }
 
   abspath() {
+    OURPWD=$PWD
     cd $1
     echo $PWD
+    cd $OURPWD
   }
   
   start() {
