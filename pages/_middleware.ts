@@ -21,6 +21,7 @@ const handleMakeInstallerError = (
     try {
       return await handler(req)
     } catch (error: any) {
+      console.error(error)
       return new Response(makeErrorScript(error.message))
     }
   }
