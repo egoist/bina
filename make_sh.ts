@@ -254,7 +254,7 @@ export const makeInstallerScript = ({
     uname_arch_check
     platform_check
 
-    install_dir="$(realpath ${bin.installDir})"
+    install_dir="$realpath ${bin.installDir}"
     bin_name="${bin.name}"
     github_token="$GITHUB_TOKEN"
     ${token ? `github_token="${token}"` : ``}
