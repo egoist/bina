@@ -92,30 +92,7 @@ export const makeInstallerScript = ({
     fi
     return 0
   }
-  
-  http_download_wget() {
-    local_file=$1
-    source_url=$1
-    header1=$3
-    header2=$4
-    header3=$5
 
-    wget -q --header "$header1" --header "$header2" --header "$header3" -O "$local_file" "$source_url"
-  }
-  
-  http_download() {
-    if is_command curl; then
-      http_download_curl "$@"
-      return
-    elif is_command wget; then
-      http_download_wget "$@"
-      return
-    fi
-    log_crit "http_download unable to find wget or curl"
-    return 1
-  }
-
-  
   uname_os() {
     os=$(uname -s | tr '[:upper:]' '[:lower:]')
   
@@ -280,7 +257,7 @@ export const makeInstallerScript = ({
       auth_header="Authorization: token $github_token"
     fi
 
-    http_download "$tmp" "$download_url" "accept: application/octet-stream" "$auth_header"
+    http_download_curl "$tmp" "$download_url" "accept: application/octet-stream" "$auth_header"
 
     ${whenDebug(`echo "temp dir: $tmpdir"`)}
 
