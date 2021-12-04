@@ -17,7 +17,7 @@ const Window = () => {
           <span className="h-2 w-2 rounded-lg bg-gray-700 inline-block"></span>
         </div>
       </header>
-      <div className="p-5 font-mono">
+      <div className="p-5 font-mono overflow-auto">
         <p>
           {`$ `}
           <span className="text-cyan-500">curl</span>
