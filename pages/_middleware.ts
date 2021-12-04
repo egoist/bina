@@ -37,11 +37,8 @@ const installerScriptHandler = handleMakeInstallerError(async (req) => {
     return NextResponse.next()
   }
 
-  const tokenFromEnv = !!process.env.GITHUB_TOKEN
-  const ghToken =
-    req.headers.get("x-github-token") ||
-    params.get("token") ||
-    process.env.GITHUB_TOKEN
+  const tokenFromUser = req.headers.get("x-github-token") || params.get("token")
+  const ghToken = tokenFromUser || process.env.GITHUB_TOKEN
 
   const tokenHeader: Record<string, string> = ghToken
     ? { Authorization: `token ${ghToken}` }
@@ -132,7 +129,7 @@ const installerScriptHandler = handleMakeInstallerError(async (req) => {
       fileInAsset: params.get("file"),
     },
     // Don't pass our own token to the generated script
-    token: tokenFromEnv ? undefined : ghToken,
+    token: tokenFromUser ? ghToken : undefined,
     original_version: repo.originalVersion,
     resolved_version: release.tag_name,
     platforms,
