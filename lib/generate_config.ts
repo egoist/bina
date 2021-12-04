@@ -1,5 +1,10 @@
 import { Asset, BinaConfig } from "../types"
 
+const isArchive = (filepath: string) => {
+  const REGEX = /\.(zip|tar|tar\.gz|tgz|tar\.bz2|tbz2|tar\.xz|txz)$/i
+  return REGEX.test(filepath)
+}
+
 const getOS = (name: string) => {
   if (/windows/i.test(name)) {
     return "windows"
@@ -44,7 +49,7 @@ export const generateConfig = (
 
   for (const asset of assets) {
     const platform = `${getOS(asset.name)}-${getARCH(asset.name)}`
-    if (!config.platforms[platform]) {
+    if (isArchive(asset.name) && !config.platforms[platform]) {
       config.platforms[platform] = {
         asset: asset.name,
         file: repo.name,
