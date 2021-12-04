@@ -209,17 +209,9 @@ export const makeInstallerScript = ({
     echo "\${TMPDIR}"
   }
 
-  realpath() {
-    OURPWD=$PWD
-    cd "$(dirname "$1")"
-    LINK=$(readlink "$(basename "$1")")
-    while [ "$LINK" ]; do
-      cd "$(dirname "$LINK")"
-      LINK=$(readlink "$(basename "$1")")
-    done
-    REALPATH="$PWD/$(basename "$1")"
-    cd "$OURPWD"
-    echo "$REALPATH"
+  abspath() {
+    cd $1
+    echo $PWD
   }
   
   start() {
@@ -231,7 +223,8 @@ export const makeInstallerScript = ({
     uname_arch_check
     platform_check
 
-    install_dir="$realpath ${bin.installDir}"
+    mkdir -p "${bin.installDir}"
+    install_dir=$(abspath "${bin.installDir}")
     bin_name="${bin.name}"
     github_token="$GITHUB_TOKEN"
     ${token ? `github_token="${token}"` : ``}
@@ -276,8 +269,6 @@ export const makeInstallerScript = ({
     # Extract
     cd "$tmpdir"
     untar "$tmp"
-  
-    mkdir -p "$install_dir"
 
     if [ -w "$install_dir" ]; then
     log_info "Installing $bin_name to $install_dir"
