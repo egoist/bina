@@ -196,7 +196,7 @@ export const makeInstallerScript = ({
       *.tar) tar -xf "\${tarball}" ;;
       *.zip) unzip -qj "\${tarball}" ;;
       *)
-        log_err "untar unknown archive format for \${tarball}"
+        log_crit "untar unknown archive format for \${tarball}"
         return 1
         ;;
     esac
