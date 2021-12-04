@@ -21,7 +21,7 @@ const Window = () => {
         <p>
           {`$ `}
           <span className="text-cyan-500">curl</span>
-          {` -sSL ${APP_URL}/denoland/deno | `}
+          {` -fsSL ${APP_URL}/denoland/deno | `}
           <span className="text-cyan-500">sh</span>
         </p>
         <div className="mt-5 text-gray-500">
@@ -121,7 +121,7 @@ export default function Home() {
           <Section title="For Users">
             <div className="markdown-body">
               <p>Basic usage:</p>
-              <CodeBlock code={`curl -sSL ${APP_URL}/$OWNER/$NAME | sh`} />
+              <CodeBlock code={`curl -fsSL ${APP_URL}/$OWNER/$NAME | sh`} />
               <p>
                 The above command will install appropriate release from{" "}
                 <code>github.com/$OWNER/$NAME</code>, by default we install it
@@ -129,7 +129,7 @@ export default function Home() {
                 this by passing a query parameter <code>dir</code> like this:
               </p>
               <CodeBlock
-                code={`curl -sSL "${APP_URL}/$OWNER/$NAME?dir=./bin" | sh`}
+                code={`curl -fsSL "${APP_URL}/$OWNER/$NAME?dir=./bin" | sh`}
               />
               <p>
                 This will then install the binary to <code>./bin</code>{" "}
@@ -140,7 +140,7 @@ export default function Home() {
                 <code>@$VERSION</code> to the pathname:
               </p>
               <CodeBlock
-                code={`curl -sSL "${APP_URL}/$OWNER/$NAME@v1.2.3" | sh`}
+                code={`curl -fsSL "${APP_URL}/$OWNER/$NAME@v1.2.3" | sh`}
               />
               <p>More query parameters are available:</p>
               <ul>

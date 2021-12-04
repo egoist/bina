@@ -86,6 +86,7 @@ export const makeInstallerScript = ({
     code=$(curl ${whenDebug(
       `-v`
       )} -w '%{http_code}' -H "$header1" -H "$header2" -H "$header3" -sSL -o "$local_file" "$source_url")
+
     if [ "$code" != "200" ]; then
       log_crit "Error downloading, got $code response from server"
       return 1
