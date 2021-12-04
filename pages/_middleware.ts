@@ -37,28 +37,28 @@ const installerScriptHandler = handleMakeInstallerError(async (req) => {
     return NextResponse.next()
   }
 
-  const githubHeaders: Record<string, string> = {}
   const tokenFromEnv = !!process.env.GITHUB_TOKEN
   const ghToken =
     req.headers.get("x-github-token") ||
     params.get("token") ||
     process.env.GITHUB_TOKEN
 
-  if (ghToken) {
-    githubHeaders.authorization = `token ${ghToken}`
-  }
+  const tokenHeader: Record<string, string> = ghToken
+    ? { Authorization: `token ${ghToken}` }
+    : {}
 
   const releaseResponse = await fetch(
     `https://api.github.com/repos/${repo.owner}/${repo.name}/releases/${repo.originalVersion}`,
     {
       headers: {
-        ...githubHeaders,
         accept: "application/json",
+        ...tokenHeader,
       },
     }
   )
 
   if (!releaseResponse.ok) {
+    console.log("??")
     throw new Error(releaseResponse.statusText)
   }
 
@@ -80,13 +80,22 @@ const installerScriptHandler = handleMakeInstallerError(async (req) => {
     ? undefined
     : generateConfig(repo, release.assets)
 
+  const binaConfigResponse =
+    binaConfigFile &&
+    (await fetch(binaConfigFile.url, {
+      method: "HEAD",
+      headers: {
+        accept: "application/octet-stream",
+        ...tokenHeader,
+      },
+    }))
+
   const binaConfig: BinaConfig =
     generatedConfig ||
-    (binaConfigFile &&
-      (await fetch(binaConfigFile.url, {
+    (binaConfigResponse &&
+      (await fetch(binaConfigResponse.url, {
         headers: {
-          ...githubHeaders,
-          accept: "application/octet-stream",
+          accept: "application/json",
         },
       })
         .then(async (res) => {
@@ -96,9 +105,7 @@ const installerScriptHandler = handleMakeInstallerError(async (req) => {
           }
           return res
         })
-        .then((res) => res.blob())
-        .then((blob) => blob.text())
-        .then((text) => JSON.parse(text))))
+        .then((res) => res.json())))
 
   const platforms: Platform[] = []
   for (const platform in binaConfig.platforms) {
