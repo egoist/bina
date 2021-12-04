@@ -89,8 +89,11 @@ const installerScriptHandler = handleMakeInstallerError(async (req) => {
           accept: "application/octet-stream",
         },
       })
-        .then((res) => {
-          if (!res.ok) throw new Error(res.statusText)
+        .then(async (res) => {
+          if (!res.ok) {
+            const msg = await res.text()
+            throw new Error(msg)
+          }
           return res
         })
         .then((res) => res.blob())
