@@ -19,6 +19,9 @@ const getOS = (name: string) => {
 }
 
 const getARCH = (name: string) => {
+  if (/amd64/.test(name)) {
+    return "amd64"
+  }
   if (/x64/i.test(name)) {
     return "amd64"
   }
