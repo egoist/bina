@@ -15,6 +15,10 @@
   content: "`";
 }
 
+.markdown-body :not(pre) > code {
+  @apply break-words;
+}
+
 .markdown-body code {
   @apply text-yellow-500;
 }

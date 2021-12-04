@@ -95,7 +95,7 @@ export default function Home() {
               </li>
             </ul>
           </header>
-          <h2 className="text-7xl my-48 font-bold">
+          <h2 className="text-7xl my-48 font-bold break-words">
             An installer for{" "}
             <span className="text-yellow-400">self-contained</span>,{" "}
             <span className="text-cyan-500">single-file</span> binaries.
