@@ -191,7 +191,7 @@ export const makeInstallerScript = ({
       ${platforms
         .map((p) => {
           return `${p.platform}) 
-          download_url="${p.asset.browser_download_url}" 
+          download_url="${p.asset.url}" 
           download_file_name="${p.asset.name}"
           bin_file="${bin.fileInAsset || p.file}"
           ;;`
