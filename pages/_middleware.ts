@@ -37,9 +37,7 @@ const installerScriptHandler = handleMakeInstallerError(async (req) => {
     return NextResponse.next()
   }
 
-  const githubHeaders: Record<string, string> = {
-    accept: "application/json",
-  }
+  const githubHeaders: Record<string, string> = {}
   const tokenFromEnv = !!process.env.GITHUB_TOKEN
   const ghToken =
     req.headers.get("x-github-token") ||
@@ -55,6 +53,7 @@ const installerScriptHandler = handleMakeInstallerError(async (req) => {
     {
       headers: {
         ...githubHeaders,
+        accept: "application/json",
       },
     }
   )
@@ -84,11 +83,15 @@ const installerScriptHandler = handleMakeInstallerError(async (req) => {
   const binaConfig: BinaConfig =
     generatedConfig ||
     (binaConfigFile &&
-      (await fetch(binaConfigFile.browser_download_url, {
+      (await fetch(binaConfigFile.url, {
         headers: {
           ...githubHeaders,
+          accept: "application/octet-stream",
         },
-      }).then((res) => res.json())))
+      })
+        .then((res) => res.blob())
+        .then((blob) => blob.text())
+        .then((text) => JSON.parse(text))))
 
   const platforms: Platform[] = []
   for (const platform in binaConfig.platforms) {
