@@ -4,6 +4,10 @@ import { execSync } from "child_process"
 
 let cli = cac("bina")
 
+const ENDOINT = process.env.BINA_DEV
+  ? "http://localhost:3000"
+  : "https://bina.egoist.sh"
+
 cli
   .command("[repo]", "Install a binary from a repository")
   .option("--token <gh_token>", "Set a GitHub token to access private repos")
@@ -25,9 +29,7 @@ cli
     ).toString()
 
     execSync(
-      `curl -fsSL "http://localhost:3000/${repo}${
-        search ? `?${search}` : ""
-      })" | sh`,
+      `curl -fsSL "${ENDOINT}/${repo}${search ? `?${search}` : ""})" | sh`,
       {
         stdio: "inherit",
       }
