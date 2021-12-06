@@ -5,10 +5,10 @@ export const makeErrorScript = (error: string) => {
   return `
   #!/bin/sh
 
+  set -e
+
   NC='\\033[0m' # No Color
   RED='\\033[0;31m'
-
-  set -e
 
   echoerr() {
     printf "$@\n" 1>&2
@@ -53,12 +53,12 @@ export const makeInstallerScript = ({
   return `
   #!/bin/sh
 
+  set -e
+
   NC='\\033[0m' # No Color
   BRIGHT_BLUE='\\033[0;94m'
   YELLOW='\\033[0;33m'
   RED='\\033[0;31m'
-
-  set -e
   
   # Some utilities from https://github.com/client9/shlib
 
@@ -68,7 +68,6 @@ export const makeInstallerScript = ({
   
   log_info() {
     printf "\${BRIGHT_BLUE}  ==>\${NC} $@\n"
-    exit 0
   }
 
   log_warn() {
