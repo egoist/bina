@@ -7,13 +7,16 @@ export const makeErrorScript = (error: string) => {
 
   set -e
 
+  NC='\\033[0m' # No Color
+  RED='\\033[0;31m'
+
   echoerr() {
     printf "$@\n" 1>&2
   }
 
   log_crit() {
     echoerr
-    echoerr "  \\x1B[31mserver error: $@\\x1B[39m"
+    echoerr "  \${RED}server error: $@\${NC}"
     echoerr
   }
 
@@ -51,6 +54,11 @@ export const makeInstallerScript = ({
   #!/bin/sh
 
   set -e
+
+  NC='\\033[0m' # No Color
+  BRIGHT_BLUE='\\033[0;94m'
+  YELLOW='\\033[0;33m'
+  RED='\\033[0;31m'
   
   # Some utilities from https://github.com/client9/shlib
 
@@ -59,16 +67,16 @@ export const makeInstallerScript = ({
   }
   
   log_info() {
-    printf "\\x1B[94m  ==>\\x1B[39m $@\n"
+    printf "\${BRIGHT_BLUE}  ==>\${NC} $@\n"
   }
 
   log_warn() {
-    printf "\\x1B[33m  ==>\\x1B[39m $@\n"
+    printf "\${YELLOW}  ==>\${NC} $@\n"
   }
   
   log_crit() {
     echoerr
-    echoerr "  \\x1B[31m$@\\x1B[39m"
+    echoerr "  \${RED}$@\${NC}"
     echoerr
   }
   
