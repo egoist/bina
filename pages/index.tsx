@@ -1,6 +1,7 @@
 import Head from "next/head"
 import React from "react"
 import { CodeBlock } from "../components/markdown"
+import { archive_ext } from "../lib/archive_ext"
 
 const APP_URL =
   process.env.NODE_ENV === "production"
@@ -226,9 +227,17 @@ export default function Home() {
               </ul>
               <p className="my-5">
                 <code>asset</code> refers to the name of an asset in the
-                release. Currently, only <code>.zip</code>, <code>.tar.gz</code>{" "}
-                and <code>.tar.xz</code> are supported.
+                release. Currently following archived files are supported:
               </p>
+              <ul className="list-disc pl-12 my-5">
+                {archive_ext.map((ext) => {
+                  return (
+                    <li key={ext}>
+                      <span>{ext}</span>
+                    </li>
+                  )
+                })}
+              </ul>
               <p className="my-5">
                 <code>file</code> refers to the path to the binary file inside
                 the archived asset.

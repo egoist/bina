@@ -1,3 +1,4 @@
+import { archive_ext } from "./lib/archive_ext"
 import { Platform } from "./types"
 
 export const makeErrorScript = (error: string) => {
@@ -192,8 +193,10 @@ export const makeInstallerScript = ({
   untar() {
     tarball=$1
     case "\${tarball}" in
-      *.tar.gz | *.tgz) tar -xzf "\${tarball}" ;;
-      *.tar) tar -xf "\${tarball}" ;;
+      ${archive_ext
+        .filter((v) => v !== ".zip")
+        .map((v) => `*${v}`)
+        .join(" | ")}) tar -xzf "\${tarball}" ;;
       *.zip) unzip -qj "\${tarball}" ;;
       *)
         log_crit "untar unknown archive format for \${tarball}"
@@ -268,13 +271,28 @@ export const makeInstallerScript = ({
     http_download_curl "$tmp" "$download_url" "accept: application/octet-stream" "$auth_header"
 
     ${whenDebug(`echo "temp dir: $tmpdir"`)}
+    ${whenDebug(`echo "temp file: $tmp"`)}
 
     # Extract
     cd "$tmpdir"
     untar "$tmp"
 
+    # If the archive extracts to a directory with the same name, cd into it
+    folder_name="$tmp"
+    # Remove extension from the name
+    ${archive_ext
+      .map((ext) => {
+        return `folder_name="$(basename "$folder_name" ${ext})"`
+      })
+      .join("\n")}
+    ${whenDebug(`echo "checking if folder $folder_name exists"`)}
+    if [ -d "$folder_name" ]; then
+      ${whenDebug(`echo "folder $folder_name exists"`)}
+      cd "$folder_name"
+    fi
+
     if [ -w "$install_dir" ]; then
-    log_info "Installing $bin_name to $install_dir"
+      log_info "Installing $bin_name to $install_dir"
       install "$bin_file" "$install_dir"
     else
       log_warn "Permissions required for installation to $install_dir"

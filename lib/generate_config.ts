@@ -1,8 +1,8 @@
 import { Asset, BinaConfig } from "../types"
+import { archive_ext } from "./archive_ext"
 
 const isArchive = (filepath: string) => {
-  const REGEX = /\.(zip|tar|tar\.gz|tgz|tar\.bz2|tbz2|tar\.xz|txz)$/i
-  return REGEX.test(filepath)
+  return archive_ext.some((ext) => filepath.endsWith(ext))
 }
 
 const getOS = (name: string) => {
