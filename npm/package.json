@@ -1,0 +1,18 @@
+{
+  "name": "bina",
+  "version": "0.1.0",
+  "description": "Install binaries from GitHub Releases",
+  "files": [
+    "dist"
+  ],
+  "type": "module",
+  "bin": "./dist/cli.js",
+  "scripts": {
+    "build": "tsup src/cli.ts --format esm ",
+    "prepublishOnly": "npm run build"
+  },
+  "devDependencies": {
+    "cac": "6.7.12"
+  },
+  "license": "MIT"
+}
