@@ -158,6 +158,31 @@ export default function Home() {
               </ul>
             </div>
           </Section>
+          <Section title="Shortcut Command">
+            <div className="markdown-body">
+              <p>
+                Not a fan of typing a long curl command manually? You can use
+                the <code>npx</code> tool instead if you have Node.js installed:
+              </p>
+              <CodeBlock code={`$ npx bina OWNER/NAME`} />
+              Detailed CLI usages:
+              <CodeBlock
+                code={`Usage:
+  $ bina [repo]
+
+Commands:
+  [repo]  Install a binary from a repository
+
+For more info, run any command with the \`--help\` flag:
+  $ bina --help
+
+Options:
+  --token <gh_token>       Set a GitHub token to access private repos
+  -d, --install-dir <dir>  Set the installation directory (default: /usr/local/bin)
+  -n, --name <name>        Set the binary name (default: repo name)`}
+              />
+            </div>
+          </Section>
           <Section title="For Maintainers">
             <div className="markdown-body">
               <p>
@@ -244,6 +269,7 @@ export default function Home() {
               </p>
             </div>
           </Section>
+
           <Section title="FAQ">
             <div className="markdown-body">
               <details open>
