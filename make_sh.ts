@@ -181,7 +181,7 @@ export const makeInstallerScript = ({
           download_url="${p.asset.url}" 
           download_file_name="${p.asset.name}"
           bin_file="${bin.fileInAsset || p.file}"
-          ;;`;
+          ;;`
         })
         .join("\n")}
       *)
@@ -291,7 +291,7 @@ export const makeInstallerScript = ({
     # Remove extension from the name
     ${archive_ext
       .map((ext) => {
-        return `folder_name="$(basename "$folder_name" ${ext})"`;
+        return `folder_name="$(basename "$folder_name" ${ext})"`
       })
       .join("\n")}
     ${whenDebug(`echo "checking if folder $folder_name exists"`)}
