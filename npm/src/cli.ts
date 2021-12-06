@@ -29,7 +29,7 @@ cli
     ).toString()
 
     execSync(
-      `curl -fsSL "${ENDOINT}/${repo}${search ? `?${search}` : ""})" | sh`,
+      `curl -fsSL "${ENDOINT}/${repo}${search ? `?${search}` : ""}" | sh`,
       {
         stdio: "inherit",
       }
