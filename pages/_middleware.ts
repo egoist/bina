@@ -124,7 +124,7 @@ const installerScriptHandler = handleMakeInstallerError(async (req) => {
     api: "http://localhost:3000",
     repo,
     bin: {
-      name: repo.name,
+      name: params.get("name") || repo.name,
       installDir: params.get("dir") || "/usr/local/bin",
       fileInAsset: params.get("file"),
     },
