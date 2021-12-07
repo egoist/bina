@@ -28,12 +28,17 @@ cli
       ].filter((v) => Boolean(v[1]))
     ).toString()
 
-    execSync(
-      `curl -fsSL "${ENDOINT}/${repo}${search ? `?${search}` : ""}" | sh`,
-      {
-        stdio: "inherit",
-      }
-    )
+    try {
+      execSync(
+        `curl -fsSL "${ENDOINT}/${repo}${search ? `?${search}` : ""}" | sh`,
+        {
+          stdio: "inherit",
+        }
+      )
+    } catch (error) {
+      console.error(error.message)
+      process.exitCode = error.status || 1
+    }
   })
 
 cli.parse()
