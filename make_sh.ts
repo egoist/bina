@@ -301,10 +301,10 @@ export const makeInstallerScript = ({
 
     if [ -w "$install_dir" ]; then
       log_info "Installing $bin_name to $install_dir"
-      install "$bin_file" "$install_dir"
+      install "$bin_file" "$install_dir/$bin_name"
     else
       log_warn "Permissions required for installation to $install_dir"
-      sudo install "$bin_file" "$install_dir"
+      sudo install "$bin_file" "$install_dir/$bin_name"
     fi
   
     log_info "Installation complete"
