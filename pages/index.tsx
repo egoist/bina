@@ -155,6 +155,9 @@ export default function Home() {
                   token via http header:{" "}
                   <code>curl -H "x-github-token:YOUR_TOKEN"</code>
                 </li>
+                <li>
+                  <code>file</code>: Custom file in assert, by default it's the repo name
+                </li>
               </ul>
             </div>
           </Section>
