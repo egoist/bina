@@ -156,7 +156,7 @@ export default function Home() {
                   <code>curl -H "x-github-token:YOUR_TOKEN"</code>
                 </li>
                 <li>
-                  <code>file</code>: Custom file in assert, by default it's the repo name
+                  <code>file</code>: The name of the binary file in the asset, by default it's the same as repo name
                 </li>
               </ul>
             </div>
