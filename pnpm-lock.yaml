@@ -2,7 +2,7 @@ lockfileVersion: 5.3
 
 specifiers:
   '@types/node': ^16.11.11
-  '@types/react': ^17.0.37
+  '@types/react': 18.0.14
   autoprefixer: ^10.4.0
   next: ^12.0.4
   postcss: ^8.4.4
@@ -19,7 +19,7 @@ dependencies:
 
 devDependencies:
   '@types/node': 16.11.11
-  '@types/react': 17.0.37
+  '@types/react': 18.0.14
   autoprefixer: 10.4.0_postcss@8.4.4
   postcss: 8.4.4
   preact: 10.6.2
@@ -271,8 +271,8 @@ packages:
     resolution: {integrity: sha512-rZ5drC/jWjrArrS8BR6SIr4cWpW09RNTYt9AMZo3Jwwif+iacXAqgVjm0B0Bv/S1jhDXKHqRVNCbACkJ89RAnQ==}
     dev: true
 
-  /@types/react/17.0.37:
-    resolution: {integrity: sha512-2FS1oTqBGcH/s0E+CjrCCR9+JMpsu9b69RTFO+40ua43ZqP5MmQ4iUde/dMjWR909KxZwmOQIFq6AV6NjEG5xg==}
+  /@types/react/18.0.14:
+    resolution: {integrity: sha512-x4gGuASSiWmo0xjDLpm5mPb52syZHJx02VKbqUKdLmKtAwIh63XClGsiTI1K6DO5q7ox4xAsQrU+Gl3+gGXF9Q==}
     dependencies:
       '@types/prop-types': 15.7.4
       '@types/scheduler': 0.16.2
@@ -766,6 +766,11 @@ packages:
 
   /debug/2.6.9:
     resolution: {integrity: sha512-bC7ElrdJaJnPbAP+1EotYvqZsb3ecl5wi6Bfi6BJTUcNowp6cvspg0jXznRTKDjm/E7AdgFBVeAPVMNcKGsHMA==}
+    peerDependencies:
+      supports-color: '*'
+    peerDependenciesMeta:
+      supports-color:
+        optional: true
     dependencies:
       ms: 2.0.0
     dev: false
@@ -1003,6 +1008,8 @@ packages:
     resolution: {integrity: sha512-/pViTfifW+gBbh/RnlFYHINvELT9Znt+SYyDKAUL6uV6By019AK/s+i9XP4jSwq7lwP38Fd8HVeTxym3+hkwmQ==}
     dependencies:
       stream-parser: 0.3.1
+    transitivePeerDependencies:
+      - supports-color
     dev: false
 
   /get-symbol-description/1.0.0:
@@ -1580,6 +1587,7 @@ packages:
       '@next/swc-win32-x64-msvc': 12.0.4
     transitivePeerDependencies:
       - '@babel/core'
+      - supports-color
       - webpack
     dev: false
 
@@ -2147,6 +2155,8 @@ packages:
     resolution: {integrity: sha1-FhhUhpRCACGhGC/wrxkRwSl2F3M=}
     dependencies:
       debug: 2.6.9
+    transitivePeerDependencies:
+      - supports-color
     dev: false
 
   /string-hash/1.1.3:
