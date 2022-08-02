@@ -2,11 +2,11 @@
 
 An installer for **self-contained**, **single-file** binaries, no additional CLI needed.
 
-Check out https://bina.egoist.sh
+Check out https://bina.egoist.dev
 
 ## Sponsors
 
-[![sponsors](https://sponsors-images.egoist.sh/sponsors.svg)](https://github.com/sponsors/egoist)
+[![sponsors](https://sponsors-images.egoist.dev/sponsors.svg)](https://github.com/sponsors/egoist)
 
 ## License
 

@@ -5,7 +5,7 @@ import { archive_ext } from "../lib/archive_ext"
 
 const APP_URL =
   process.env.NODE_ENV === "production"
-    ? "https://bina.egoist.sh"
+    ? "https://bina.egoist.dev"
     : "http://localhost:3000"
 
 const Window = () => {
@@ -156,7 +156,8 @@ export default function Home() {
                   <code>curl -H "x-github-token:YOUR_TOKEN"</code>
                 </li>
                 <li>
-                  <code>file</code>: The name of the binary file in the asset, by default it's the same as repo name
+                  <code>file</code>: The name of the binary file in the asset,
+                  by default it's the same as repo name
                 </li>
               </ul>
             </div>
@@ -335,7 +336,7 @@ Options:
               >
                 <img
                   alt="github sponsors"
-                  src="https://sponsors-images.egoist.sh/sponsors.svg"
+                  src="https://sponsors-images.egoist.dev/sponsors.svg"
                   className="mx-auto"
                 />
               </a>

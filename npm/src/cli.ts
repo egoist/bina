@@ -6,7 +6,7 @@ let cli = cac("bina")
 
 const ENDOINT = process.env.BINA_DEV
   ? "http://localhost:3000"
-  : "https://bina.egoist.sh"
+  : "https://bina.egoist.dev"
 
 cli
   .command("[repo]", "Install a binary from a repository")
